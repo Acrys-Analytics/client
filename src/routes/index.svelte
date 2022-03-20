@@ -1,11 +1,14 @@
 <script>
-	import Searchbar from '$lib/Searchbar.svelte';
+	import Logo from '$lib/Logo.svelte';
+	import SearchBar from '$lib/SearchBar.svelte';
 </script>
 
-<div class="h-full w-full flex flex-col justify-center items-center">
-	<h1 class="text-4xl font-bold text-primary">Acrys</h1>
-	<p class="mt-2">Statistical Analysis System for League of Legends</p>
-	<div class="mt-6 w-1/3">
-		<Searchbar />
+<div class="w-screen h-screen flex justify-center items-center">
+	<div class="w-1/2 flex flex-col items-center">
+		<Logo />
+		<span class="mt-5 mb-8 text-xl text-center select-none">
+			Statistical Analysis System for League of Legends
+		</span>
+		<SearchBar />
 	</div>
 </div>
