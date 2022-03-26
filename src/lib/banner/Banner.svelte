@@ -10,10 +10,17 @@
 <div class="w-[360px] flex flex-col">
 	<div class="relative bg-img h-52">
 		<div class="absolute bottom-5">
-			<Title name="EinHobbyloses" role={Role.BOT} tier="grandmaster" />
+			<Title name="LeXonJe" role={Role.SUP} tier="challenger" />
 		</div>
 	</div>
-	<ProfileInfo />
+	<ProfileInfo
+		stats={[
+			{ name: 'KDA', value: '23.45' },
+			{ name: 'Ranked', value: 'lol' },
+			{ name: 'Ranked', value: 'lol' },
+			{ name: 'LEVEL', value: 'lol' }
+		]}
+	/>
 	<span class="mt-5" />
 	<ChampionPool />
 	<span class="mt-5" />

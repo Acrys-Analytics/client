@@ -1,5 +1,7 @@
 <script lang="ts">
 	import ChampionStats from './ChampionStats.svelte';
+
+	export let champions: [] = [];
 </script>
 
 <div class="card">
@@ -17,3 +19,6 @@
 		<ChampionStats />
 	</div>
 </div>
+
+<style windi:preflights>
+</style>

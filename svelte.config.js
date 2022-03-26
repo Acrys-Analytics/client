@@ -9,15 +9,7 @@ const config = {
 	preprocess: [preprocess(), windi({})],
 
 	kit: {
-		adapter: adapter(),
-
-		vite: {
-			server: {
-				hmr: {
-					port: 443
-				}
-			}
-		}
+		adapter: adapter()
 	}
 };
 

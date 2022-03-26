@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Match from './Match.svelte';
 
-	const matches = ['lol', 'lol', 'lol', 'lol', 'lol', 'lol', 'lol'];
+	export let matches = ['lol', 'lol', 'lol', 'lol', 'lol', 'lol', 'lol'];
 </script>
 
 <div class="card p-0">
