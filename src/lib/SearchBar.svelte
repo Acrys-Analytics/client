@@ -3,6 +3,8 @@
 	import { onMount } from 'svelte';
 	import Dropdown from './Dropdown.svelte';
 
+	export let autofocus: boolean = true;
+
 	let depth = 50;
 	let searchInput = null;
 
@@ -28,14 +30,12 @@
 	}
 
 	onMount(() => {
-		searchInput.focus();
+		autofocus && searchInput.focus();
 	});
 </script>
 
-<div
-	class="w-full rounded-lg flex items-center bg-gradient-to-r from-base-200 to-base-300 border-1 border-base-400 h-12"
->
-	<div class="h-full flex items-center border-0 border-r-1 border-base-400 px-3">
+<div class="w-full rounded-lg flex items-center bg-base-100 shadow-lg h-12">
+	<div class="h-full flex items-center border-0 border-r-1 border-base-200 px-3">
 		<Dropdown options={['Player', 'Clash']} />
 		<span class="mx-1" />
 		<Dropdown options={regions} placeholder="Region" />
@@ -43,7 +43,7 @@
 	<input
 		type="text"
 		placeholder="Playername"
-		class="flex-1 h-full px-3 bg-transparent placeholder-content focus:outline-none"
+		class="flex-1 h-full px-3 bg-transparent placeholder-base-300 outline-none"
 		on:keydown={onEnter}
 		bind:this={searchInput}
 	/>
@@ -79,6 +79,9 @@
 		on:input={filterDepth}
 		on:keydown={onEnter}
 		bind:value={depth}
-		class="w-18 bg-transparent placeholder-content border-0 border-l-1 border-base-400 h-full text-center focus:outline-none focus:bg-transparent"
+		class="w-18 bg-transparent placeholder-base-300 border-0 border-l-1 border-base-200 h-full text-center focus:(outline-none bg-transparent)"
 	/>
 </div>
+
+<style>
+</style>

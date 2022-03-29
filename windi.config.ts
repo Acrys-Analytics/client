@@ -3,18 +3,19 @@ import { defineConfig } from 'windicss/helpers';
 export default defineConfig({
 	theme: {
 		colors: {
-			blue: '#28C8FB',
+			blue: '#2AC9FB',
 			green: '#49F350',
 			yellow: '#F8C74A',
 			red: '#FB2841',
 			white: '#FFFFFF',
-			content: '#85829D',
+			content: '#A1A0B2',
 			transparent: 'transparent',
 			base: {
-				100: '#0F0F13',
-				200: '#232333',
-				300: '#1C1B2E',
-				400: '#2C2C3B'
+				100: '#0F0F10',
+				200: '#1A1A1D',
+				300: '#1B1B20',
+				400: '#85829D',
+				500: '#C8C8CA'
 			},
 			unranked: {
 				primary: '#A6A6A6',
@@ -106,24 +107,23 @@ export default defineConfig({
 		'badge-challenger'
 	],
 	shortcuts: {
-		badge: 'border-2 px-1 text-sm select-none',
-		'badge-blue': 'border-blue bg-blue bg-opacity-10 text-blue',
-		'badge-unranked':
-			'border-unranked-primary bg-unranked-primary bg-opacity-10 text-unranked-primary',
-		'badge-iron': 'border-iron-primary bg-iron-primary bg-opacity-10 text-iron-primary',
-		'badge-bronze': 'border-bronze-primary bg-bronze-primary bg-opacity-10 text-bronze-primary',
-		'badge-silver': 'border-silver-primary bg-silver-primary bg-opacity-10 text-silver-primary',
-		'badge-gold': 'border-gold-primary bg-gold-primary bg-opacity-10 text-gold-primary',
-		'badge-platin': 'border-platin-primary bg-platin-primary bg-opacity-10 text-platin-primary',
-		'badge-diamond': 'border-diamond-primary bg-diamond-primary bg-opacity-10 text-diamond-primary',
-		'badge-master': 'border-master-primary bg-master-primary bg-opacity-10 text-master-primary',
-		'badge-grandmaster':
-			'border-grandmaster-primary bg-grandmaster-primary bg-opacity-10 text-grandmaster-primary',
-		'badge-challenger':
-			'border-challenger-primary bg-challenger-primary bg-opacity-10 text-challenger-primary',
-		card: 'bg-gradient-to-r from-[#1A1B25] to-[#101016] border-2 border-[#18171E] p-4 text-sm rounded-[5px]',
-		select:
-			'py-[2px] badge cursor-pointer border-blue bg-blue bg-opacity-5 text-blue hover:bg-opacity-25 flex'
+		badge: 'border-1 bg-gradient-to-r from-base-200 to-base-100 rounded-[5px] text-sm px-2 py-1',
+		'badge-blue': 'border-blue text-blue',
+		'badge-red': 'border-red text-red',
+		'badge-yellow': 'border-yellow text-yellow',
+		'badge-green': 'border-green text-green',
+		'badge-unranked': 'border-unranked-primary text-unranked-primary',
+		'badge-iron': 'border-iron-primary text-iron-primary',
+		'badge-bronze': 'border-bronze-primary text-bronze-primary',
+		'badge-silver': 'border-silver-primary text-silver-primary',
+		'badge-gold': 'border-gold-primary text-gold-primary',
+		'badge-platin': 'border-platin-primary text-platin-primary',
+		'badge-diamond': 'border-diamond-primary text-diamond-primary',
+		'badge-master': 'border-master-primary text-master-primary',
+		'badge-grandmaster': 'border-grandmaster-primary text-grandmaster-primary',
+		'badge-challenger': 'border-challenger-primary text-challenger-primary',
+		card: '',
+		select: 'badge badge-blue flex hover:(bg-none bg-blue bg-opacity-10)'
 	},
 	variants: {},
 	plugins: []

@@ -14,33 +14,25 @@
 		open = false;
 	}
 
-	onMount(() => {
-		const handleOutsideClick = (event) => {
-			if (open && !menu.contains(event.target)) {
-				open = false;
-			}
-		};
+	function handleOutsideClick(event) {
+		if (open && !menu.contains(event.target)) {
+			open = false;
+		}
+	}
 
-		const handleEscape = (event) => {
-			if (open && event.key === 'Escape') {
-				open = false;
-			}
-		};
-
-		document.addEventListener('click', handleOutsideClick, false);
-		document.addEventListener('keyup', handleEscape, false);
-
-		return () => {
-			document.removeEventListener('click', handleOutsideClick, false);
-			document.removeEventListener('keyup', handleEscape, false);
-		};
-	});
+	function handleEscape(event) {
+		if (open && event.key === 'Escape') {
+			open = false;
+		}
+	}
 </script>
+
+<svelte:window on:click={handleOutsideClick} on:keydown={handleEscape} />
 
 <div class="relative inline-block text-left" bind:this={menu}>
 	<button
 		type="button"
-		class="select px-1 py-0 focus:outline-none"
+		class="select outline-none"
 		aria-expanded="true"
 		aria-haspopup="true"
 		on:click={() => (open = !open)}
@@ -63,7 +55,7 @@
 
 	{#if open}
 		<div
-			class="origin-top-left absolute left-0 mt-2 w-40 rounded-md shadow-lg bg-base-300 border-1 border-base-400"
+			class="origin-top-left absolute left-0 mt-2 w-40 rounded-md shadow-lg bg-base-100 border-1 border-base-200"
 			role="menu"
 			aria-orientation="vertical"
 			aria-labelledby="menu-button"
@@ -73,7 +65,7 @@
 				{#each options as option}
 					<span
 						href="#"
-						class="text-content cursor-pointer block rounded-md px-4 py-2 text-sm hover:bg-base-100"
+						class="text-content cursor-pointer block rounded-md px-4 py-2 text-sm hover:(bg-white text-base-100)"
 						role="menuitem"
 						tabindex="-1"
 						id="menu-item-0"
