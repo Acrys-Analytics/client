@@ -35,7 +35,7 @@
 </script>
 
 <div class="w-full rounded-lg flex items-center bg-base-100 shadow-lg h-12">
-	<div class="h-full flex items-center border-0 border-r-1 border-base-200 px-3">
+	<div class="h-full flex items-center border-0 border-r-1 border-base-200 px-2">
 		<Dropdown options={['Player', 'Clash']} />
 		<span class="mx-1" />
 		<Dropdown options={regions} placeholder="Region" />
@@ -43,7 +43,7 @@
 	<input
 		type="text"
 		placeholder="Playername"
-		class="flex-1 h-full px-3 bg-transparent placeholder-base-300 outline-none"
+		class="flex-1 h-full px-2 bg-transparent placeholder-base-300 outline-none"
 		on:keydown={onEnter}
 		bind:this={searchInput}
 	/>

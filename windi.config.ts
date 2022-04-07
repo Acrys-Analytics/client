@@ -1,4 +1,5 @@
 import { defineConfig } from 'windicss/helpers';
+import aspect from 'windicss/plugin/aspect-ratio';
 
 export default defineConfig({
 	theme: {
@@ -8,7 +9,10 @@ export default defineConfig({
 			yellow: '#F8C74A',
 			red: '#FB2841',
 			white: '#FFFFFF',
-			content: '#A1A0B2',
+			content: {
+				100: '#A1A0B2',
+				200: '#565661'
+			},
 			transparent: 'transparent',
 			base: {
 				100: '#0F0F10',
@@ -104,7 +108,26 @@ export default defineConfig({
 		'badge-diamond',
 		'badge-master',
 		'badge-grandmaster',
-		'badge-challenger'
+		'badge-challenger',
+		'border-unranked-primary',
+		'border-bronze-primary',
+		'border-silver-primary',
+		'border-gold-primary',
+		'border-platin-primary',
+		'border-diamond-primary',
+		'border-master-primary',
+		'border-grandmaster-primary',
+		'border-challenger-primary',
+		'text-unranked-primary',
+		'text-bronze-primary',
+		'text-silver-primary',
+		'text-gold-primary',
+		'text-platin-primary',
+		'text-diamond-primary',
+		'text-master-primary',
+		'text-grandmaster-primary',
+		'text-challenger-primary',
+		'text-base-200'
 	],
 	shortcuts: {
 		badge: 'border-1 bg-gradient-to-r from-base-200 to-base-100 rounded-[5px] text-sm px-2 py-1',
@@ -122,9 +145,10 @@ export default defineConfig({
 		'badge-master': 'border-master-primary text-master-primary',
 		'badge-grandmaster': 'border-grandmaster-primary text-grandmaster-primary',
 		'badge-challenger': 'border-challenger-primary text-challenger-primary',
-		card: '',
+		card: 'border-base-200 border-1 bg-base-100 rounded-[5px] p-2',
+		'inner-card': 'bg-base-200 rounded-[5px] p-2',
 		select: 'badge badge-blue flex hover:(bg-none bg-blue bg-opacity-10)'
 	},
 	variants: {},
-	plugins: []
+	plugins: [aspect]
 });
