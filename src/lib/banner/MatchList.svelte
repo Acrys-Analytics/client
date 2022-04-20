@@ -1,35 +1,17 @@
 <script lang="ts">
-	import Match from './Match.svelte';
-	import type { Role } from '$lib/league/roles.constants';
+  import MatchView from "$lib/league/MatchView.svelte";
+  import type { Participant } from "$lib/types/dto/PrismaTypes";
 
-	interface Match {
-		id: string;
-		win: boolean;
-		kills: number;
-		deaths: number;
-		assists: number;
-		championId: number;
-		championName: string;
-		championLevel: number;
-		visionscore: number;
-		position: Role;
-		spell1: string;
-		spell2: string;
-		rune1: string;
-		rune2: string;
-		items: number[];
-	}
-
-	export let matches: Match[] = [];
+  export let matches: Participant[] = [];
 </script>
 
 <div class="flex flex-col items-center text-xs mt-6">
-	<span class="my-4">Matchhistory</span>
-	<div class="flex">
-		{#each matches as match (match.id)}
-			<Match {...match} />
-		{/each}
-	</div>
+  <span class="my-4">Matchhistory</span>
+  <div class="grid grid-cols-1 gap-y-4">
+    {#each matches as match (match.matchId)}
+      <MatchView {match} />
+    {/each}
+  </div>
 </div>
 
 <style>

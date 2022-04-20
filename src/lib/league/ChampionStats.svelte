@@ -1,22 +1,16 @@
 <script lang="ts">
-	import KdaIndicator from '$lib/league/KDAIndicator.svelte';
-	import ChampionPicture from './ChampionPicture.svelte';
+  import type { AnalyzedQueriesDTOs } from "$lib/types/dto/AnalyzedQueryDTO";
 
-	export let summonerTotalGames: number,
-		championName: string,
-		masteryLevel: number,
-		used: number,
-		wins: number,
-		kills: number,
-		deaths: number,
-		assists: number;
+  import ChampionPicture from "./ChampionPicture.svelte";
 
-	$: playRate = ((used / summonerTotalGames) * 100).toFixed(2);
-	$: losses = used - wins;
+  export let champion: AnalyzedQueriesDTOs.Champion, summonerTotalGames: number;
+
+  $: playRate = ((champion.used / summonerTotalGames) * 100).toFixed(2);
+  $: losses = champion.used - champion.wins;
 </script>
 
 <span class="flex flex-col items-center mx-1">
-	<!--
+  <!--
 	<span
 		class="text-content-200 text-lg leading-none"
 		class:text-gold-primary={champions.indexOf(champion) === 0}
@@ -25,12 +19,12 @@
 		>{champions.indexOf(champion) + 1}.</span
 	>
 	-->
-	<div class="my-2">
-		<ChampionPicture name={championName} />
-	</div>
-	<span class="text-white">{playRate}%</span>
-	<span>({wins}W {losses}N)</span>
-	<span><KdaIndicator {kills} {deaths} {assists} /> KDA</span>
+  <div class="my-2">
+    <ChampionPicture name={champion.championName} />
+  </div>
+  <span class="text-white">{playRate}%</span>
+  <span>({champion.wins}W {losses}N)</span>
+  <!--<span><KdaIndicator {kills} {deaths} {assists} /> KDA</span>-->
 </span>
 
 <style>

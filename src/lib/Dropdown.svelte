@@ -1,10 +1,8 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
 	export let options: string[] = [];
 	export let placeholder: string = '';
 
-	$: selected = placeholder ? null : options[0];
+	export let selected = placeholder ? null : options[0];
 
 	let open: boolean = false;
 	let menu = null;
