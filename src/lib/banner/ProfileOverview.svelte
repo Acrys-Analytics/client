@@ -1,8 +1,10 @@
 <script lang="ts">
-  import PositionIcon from "$lib/league/PositionIcon.svelte";
+  import { assets } from '$app/paths';
 
-  import { ddragonVersion } from "$lib/stores/ddragonVersion";
-  import type { Position } from "$lib/types/dto/PrismaTypes";
+  import PositionIcon from '$lib/league/PositionIcon.svelte';
+
+  import { ddragonVersion } from '$lib/stores/ddragonVersion';
+  import type { Position } from '$lib/types/dto/PrismaTypes';
 
   export let profileIconId: number,
     level: number,
@@ -19,7 +21,7 @@
   <div
     class="h-[105px] w-[105px] inner-card flex flex-col justify-center items-center text-center"
   >
-    <img class="w-12" src="/static/img/rank/{tierLower}.png" alt={tier} />
+    <img class="w-12" src="{assets}/img/rank/{tierLower}.png" alt={tier} />
     <span>{tier} {rank}</span>
     <span class="text-{tierLower}-primary leading-none">{leaguePoints} LP</span>
   </div>

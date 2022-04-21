@@ -1,15 +1,17 @@
 <script lang="ts">
+  import { assets } from '$app/paths';
+
   export let level: number, points: number;
 
   function numberWithCommas(num, char) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, char);
   }
 
-  $: pointsWithCommas = numberWithCommas(points, " ");
+  $: pointsWithCommas = numberWithCommas(points, ' ');
 </script>
 
 <div class="tooltip w-full">
-  <img src="/static/img/mastery/{level}.png" alt="" class="select-none" />
+  <img src="{assets}/img/mastery/{level}.png" alt="" class="select-none" />
   <span class="tooltiptext ">{pointsWithCommas} Pts.</span>
 </div>
 
