@@ -8,18 +8,18 @@
   const dispatch = createEventDispatcher();
 
   const searchType = ["PLAYER", "CLASH"];
-  const regions = [
-    "BR1",
-    "EUN1",
-    "EUW1",
-    "JP1",
-    "KR1",
-    "LA1",
-    "NA1",
-    "OC1",
-    "TR1",
-    "RU1",
-  ];
+  const regions = {
+    BR: "BR1",
+    EUN: "EUN1",
+    EUW: "EUW1",
+    JP: "JP1",
+    KR: "KR",
+    LA: "LA1",
+    NA: "NA1",
+    OC: "OC1",
+    TR: "TR1",
+    RU: "RU",
+  };
 
   let depth: number = 50;
   let search: string = "";
@@ -43,7 +43,7 @@
       depth: Number(depth),
       search,
       type,
-      region,
+      region: regions[region],
     });
   }
 
@@ -67,7 +67,11 @@
   >
     <Dropdown options={searchType} bind:selected={type} />
     <span class="mx-1" />
-    <Dropdown options={regions} placeholder="Region" bind:selected={region} />
+    <Dropdown
+      options={Object.keys(regions)}
+      placeholder="Region"
+      bind:selected={region}
+    />
   </div>
   <input
     type="text"

@@ -1,11 +1,15 @@
 <script>
-  import Banner from "$lib/banner/Banner.svelte";
-  import { query } from "$lib/stores/query";
+  import Banner from '$lib/banner/Banner.svelte';
+  import { query } from '$lib/stores/query';
 
   $: summoners = $query?.snapshots || [];
 
   $: completed = $query?.complete;
   $: error = $query?.error;
+
+  $: {
+    console.log(error);
+  }
 </script>
 
 <!--<div class="inline-flex justify-start xl:(justify-center flex) items-start mx-5">-->
@@ -19,9 +23,10 @@
   {/each}
 </div>
 <div
-  class="fixed position-center mb-2 badge badge-yellow"
+  class="fixed position-center mb-2 badge"
   class:badge-green={completed}
   class:badge-red={error}
+  class:badge-yellow={!(completed || error)}
 >
   {#if error}
     {error}
