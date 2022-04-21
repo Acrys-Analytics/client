@@ -2,9 +2,9 @@
   import KdaIndecator from "$lib/league/KDAIndicator.svelte";
   import { ddragonVersion } from "$lib/stores/ddragonVersion";
   import ChampionPicture from "$lib/league/ChampionPicture.svelte";
-  import type { Participant } from "$lib/types/dto/PrismaTypes";
+  import type { AnalyzedQueriesDTOs } from "$lib/types/dto/AnalyzedQueryDTO";
 
-  export let match: Participant;
+  export let match: AnalyzedQueriesDTOs.MatchParticipant;
 
   $: cappedPosition = match.position.slice(0, 3);
 </script>
@@ -12,9 +12,9 @@
 <div class="w-full flex flex-col">
   <div class="w-full flex justify-between items-baseline text-xs">
     {#if match.win}
-      <span class="text-sm text-blue w-[55px]">Victory</span>
+      <span class="text-sm text-blue">Victory</span>
     {:else}
-      <span class="text-sm text-red w-[55px]">Defeat</span>
+      <span class="text-sm text-red">Defeat</span>
     {/if}
     <span
       >KDA <KdaIndecator
@@ -33,22 +33,20 @@
     <span class="grid grid-cols-2 gap-1">
       <img
         src="https://ddragon.leagueoflegends.com/cdn/{$ddragonVersion}/img/spell/{match
-          .spells[0]}.png"
+          .spells[0].image}"
         alt="S1"
       />
       <img
-        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/{match
-          .runes[0]}.png"
+        src="https://ddragon.leagueoflegends.com/cdn/img/{match.runes[0].image}"
         alt="R1"
       />
       <img
         src="https://ddragon.leagueoflegends.com/cdn/{$ddragonVersion}/img/spell/{match
-          .spells[2]}.png"
+          .spells[1].image}"
         alt="S2"
       />
       <img
-        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/{match
-          .runes[1]}.png"
+        src="https://ddragon.leagueoflegends.com/cdn/img/{match.runes[1].image}"
         alt="R2"
       />
     </span>

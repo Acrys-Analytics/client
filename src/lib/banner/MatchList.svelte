@@ -1,8 +1,8 @@
 <script lang="ts">
   import MatchView from "$lib/league/MatchView.svelte";
-  import type { Participant } from "$lib/types/dto/PrismaTypes";
+  import type { AnalyzedQueriesDTOs } from "$lib/types/dto/AnalyzedQueryDTO";
 
-  export let matches: Participant[] = [];
+  export let matches: AnalyzedQueriesDTOs.MatchParticipant[] = [];
 </script>
 
 <div class="flex flex-col items-center text-xs mt-6">
