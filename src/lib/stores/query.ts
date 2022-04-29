@@ -7,7 +7,7 @@ type QueryStore = AnalyzedQueriesDTOs.AnalyzedQuery | null;
 export const queryId = writable("");
 
 export const query: Readable<QueryStore> = derived<Writable<string>, QueryStore>(queryId, ($queryId, set) => {
-  if (browser) {
+  if (browser && $queryId) {
     set(null);
 
     const eventSource = new EventSource(`${import.meta.env.VITE_BACKEND_PATH}/query/${$queryId}/sse`);
