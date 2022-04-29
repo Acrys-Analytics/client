@@ -8,22 +8,11 @@
   $: tierLower = tier.toLowerCase();
 </script>
 
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  style="height: {height};"
-  fill="none"
-  viewBox="0 0 126 104"
->
+<svg xmlns="http://www.w3.org/2000/svg" style="height: {height};" fill="none" viewBox="0 0 126 104">
   {#if position === Position.TOP}
-    <path
-      class="fill-{tierLower}-secondary"
-      d="M114.988 104V12l-16 16v60h-60l-16 16h92z"
-    />
+    <path class="fill-{tierLower}-secondary" d="M114.988 104V12l-16 16v60h-60l-16 16h92z" />
     <path class="fill-{tierLower}-secondary" d="M78.988 40v28h-28V40h28z" />
-    <path
-      class="fill-{tierLower}-primary"
-      d="M10.988 0h96l-20 20h-56v56l-20 20V0z"
-    />
+    <path class="fill-{tierLower}-primary" d="M10.988 0h96l-20 20h-56v56l-20 20V0z" />
   {:else if position === Position.JUNGLE}
     <path
       class="fill-{tierLower}-primary"
@@ -34,24 +23,12 @@
       d="M75.373 64.818c-.955-8.177-2.738-13.29-8.01-23.297C73.45 21.896 79.226 12.897 93.263 0 82.537 20.453 79.82 32.596 79.045 56.106c-1.792 1.828-2.707 3.252-3.672 8.712z"
     />
   {:else if position === Position.MIDDLE}
-    <path
-      class="fill-{tierLower}-primary"
-      d="M31.988 104h-20V84l84-84h20v20l-84 84z"
-    />
-    <path
-      class="fill-{tierLower}-secondary"
-      d="M63.988 88l-16 16h68V36l-16 16v36h-36zM27.988 52l-16 16V0h68l-16 16h-36v36z"
-    />
+    <path class="fill-{tierLower}-primary" d="M31.988 104h-20V84l84-84h20v20l-84 84z" />
+    <path class="fill-{tierLower}-secondary" d="M63.988 88l-16 16h68V36l-16 16v36h-36zM27.988 52l-16 16V0h68l-16 16h-36v36z" />
   {:else if position === Position.BOTTOM}
-    <path
-      class="fill-{tierLower}-secondary"
-      d="M11.988 0v92l16-16V16h60l16-16h-92z"
-    />
+    <path class="fill-{tierLower}-secondary" d="M11.988 0v92l16-16V16h60l16-16h-92z" />
     <path class="fill-{tierLower}-secondary" d="M47.988 64V36h28v28h-28z" />
-    <path
-      class="fill-{tierLower}-primary"
-      d="M115.988 104h-96l20-20h56V28l20-20v96z"
-    />
+    <path class="fill-{tierLower}-primary" d="M115.988 104h-96l20-20h56V28l20-20v96z" />
   {:else if position === Position.UTILITY}
     <path
       class="fill-{tierLower}-secondary"
@@ -60,6 +37,11 @@
     <path
       class="fill-{tierLower}-primary"
       d="M62.502 41.477l-3.484-3.915-11.215 55.06L62.502 104l14.464-11.379-11.036-55.06-3.428 3.916zM62.502 29.207L44.02 7.326 48.138 0h28.498l4.052 7.326-18.186 21.881z"
+    />
+  {:else if position === Position.FILL}
+    <path
+      class="fill-{tierLower}-primary"
+      d="M44.383 99.84 62.21 71.314 80.04 99.84 92.223 104l5.051-12.183-19.314-31.2h36.549l8.914-8.32-8.914-8.32H77.96L97.274 12.48 92.52 0 79.446 4.754 62.21 33.28 44.977 4.754 31.903 0l-4.754 12.48 19.314 31.497H9.914L1 52.297l8.914 8.32h36.549l-19.314 31.2L32.2 104l12.183-4.16Z"
     />
   {/if}
 </svg>

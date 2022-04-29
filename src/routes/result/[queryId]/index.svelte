@@ -1,33 +1,22 @@
 <script>
-  import Banner from '$lib/banner/Banner.svelte';
-  import { query } from '$lib/stores/query';
+  import Banner from "$lib/banner/Banner.svelte";
+  import { query } from "$lib/stores/query";
 
   $: summoners = $query?.snapshots || [];
 
   $: completed = $query?.complete;
   $: error = $query?.error;
-
-  $: {
-    console.log(error);
-  }
 </script>
 
 <!--<div class="inline-flex justify-start xl:(justify-center flex) items-start mx-5">-->
-<div
-  class="flex flex-col items-center xl:(flex-row justify-center items-start) mb-10"
->
+<div class="flex flex-col items-center xl:(flex-row justify-center items-start) mb-10">
   {#each summoners as summoner}
     <div class="ml-5 first:ml-0">
       <Banner {summoner} />
     </div>
   {/each}
 </div>
-<div
-  class="fixed position-center mb-2 badge"
-  class:badge-green={completed}
-  class:badge-red={error}
-  class:badge-yellow={!(completed || error)}
->
+<div class="fixed position-center mb-2 badge" class:badge-green={completed} class:badge-red={error} class:badge-yellow={!(completed || error)}>
   {#if error}
     {error}
   {:else if completed}

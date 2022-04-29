@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { assets } from '$app/paths';
+  import { assets } from "$app/paths";
 
-  import PositionIcon from '$lib/league/PositionIcon.svelte';
+  import PositionIcon from "$lib/league/PositionIcon.svelte";
 
-  import { ddragonVersion } from '$lib/stores/ddragonVersion';
-  import type { Position } from '$lib/types/dto/PrismaTypes';
+  import { ddragonVersion } from "$lib/stores/ddragonVersion";
+  import { Position } from "$lib/types/dto/PrismaTypes";
 
   export let profileIconId: number,
     level: number,
@@ -18,9 +18,7 @@
 </script>
 
 <div class="w-full relative flex justify-between text-sm">
-  <div
-    class="h-[105px] w-[105px] inner-card flex flex-col justify-center items-center text-center"
-  >
+  <div class="h-[105px] w-[105px] inner-card flex flex-col justify-center items-center text-center">
     <img class="w-12" src="{assets}/img/rank/{tierLower}.png" alt={tier} />
     <span>{tier} {rank}</span>
     <span class="text-{tierLower}-primary leading-none">{leaguePoints} LP</span>
@@ -30,19 +28,13 @@
     src="https://ddragon.leagueoflegends.com/cdn/{$ddragonVersion}/img/profileicon/{profileIconId}.png"
     alt=""
   />
-  <div
-    class="position-level badge badge-{tierLower} bg-none bg-challenger-primary bg-opacity-10 text-white"
-  >
+  <div class="position-level badge badge-{tierLower} bg-none bg-challenger-primary bg-opacity-10 text-white">
     Level {level}
   </div>
-  <div
-    class="h-[105px] w-[105px] inner-card flex flex-col justify-center items-center text-center"
-  >
+  <div class="h-[105px] w-[105px] inner-card flex flex-col justify-center items-center text-center">
     <PositionIcon {position} {tier} height="2rem" />
     <span class="mt-2">{position}</span>
-    <span class="text-{tierLower}-primary leading-none"
-      >{gamesPlayedWithPosition} Games</span
-    >
+    <span class="text-{tierLower}-primary leading-none">{gamesPlayedWithPosition} Games</span>
   </div>
 </div>
 

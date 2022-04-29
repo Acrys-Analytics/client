@@ -1,16 +1,29 @@
+import { browser } from "$app/env";
 import type { AnalyzedQueriesDTOs } from "$lib/types/dto/AnalyzedQueryDTO";
-import { writable } from "svelte/store";
+import { derived, writable, type Readable, type Writable } from "svelte/store";
 
 type QueryStore = AnalyzedQueriesDTOs.AnalyzedQuery | null;
 
-function createQueryStore() {
-  const { subscribe, set } = writable(null as QueryStore);
+export const queryId = writable("");
 
-  return {
-    subscribe,
-    reset: () => set(null),
-    set,
-  };
-}
+export const query: Readable<QueryStore> = derived<Writable<string>, QueryStore>(queryId, ($queryId, set) => {
+  if (browser) {
+    set(null);
 
-export const query = createQueryStore();
+    const eventSource = new EventSource(`${import.meta.env.VITE_BACKEND_PATH}/query/${$queryId}/sse`);
+
+    eventSource.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+
+      if (data.complete) {
+        eventSource.close();
+      }
+
+      set(data);
+    };
+
+    return () => {
+      eventSource.close();
+    };
+  }
+});

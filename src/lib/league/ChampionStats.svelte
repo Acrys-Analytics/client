@@ -4,9 +4,7 @@
   import ChampionPicture from "./ChampionPicture.svelte";
   import Mastery from "./Mastery.svelte";
 
-  export let champion: AnalyzedQueriesDTOs.Champion,
-    summonerTotalGames: number,
-    index: number;
+  export let champion: AnalyzedQueriesDTOs.Champion, summonerTotalGames: number, index: number;
 
   $: playRate = ((champion.used / summonerTotalGames) * 100).toFixed(2);
   $: losses = champion.used - champion.wins;
@@ -21,7 +19,7 @@
   >
   <div class="mb-6 relative">
     <ChampionPicture name={champion.championName} />
-    <div class="position-bot w-12">
+    <div class="position-bot w-10">
       <Mastery level={champion.level} points={champion.points} />
     </div>
   </div>
@@ -35,6 +33,6 @@
     position: absolute;
     left: 50%;
     bottom: 0;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, 60%);
   }
 </style>
