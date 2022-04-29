@@ -1,16 +1,19 @@
+# Build context
 FROM node:16-alpine as builder
 
 WORKDIR /app
+
+ARG VITE_BACKEND_PATH
+RUN echo Backend URL: $VITE_BACKEND_PATH
 
 COPY package.json ./
 COPY yarn.lock ./
 RUN yarn install
 
 COPY . .
-RUN yarn run build \
-  && yarn install --production
+RUN yarn run build
 
-
+# Final nodejs server
 FROM node:16-alpine
 
 WORKDIR /app
