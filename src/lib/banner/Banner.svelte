@@ -9,18 +9,19 @@
 
   $: mostPlayedChampion = summoner.championPool[0]?.championName || "";
 
-  $: mostPlayedPosition = summoner.mostPlayedPosition[0]?.position || Position.FILL;
-  $: position = Position[summoner.clashPosition || mostPlayedPosition];
+  $: mostPlayedPosition = summoner.mostPlayedPosition[0];
+  $: position = Position[summoner.clashPosition || mostPlayedPosition.position] || Position.FILL;
+  $: positionData = summoner.mostPlayedPosition && summoner.mostPlayedPosition.find((value) => value.position === position);
 
-  $: gamesPlayedWithPosition = summoner.mostPlayedPosition.length > 0 ? summoner.mostPlayedPosition?.find((value) => value.position === position).count : 0;
+  $: gamesPlayedWithPosition = positionData && summoner.mostPlayedPosition?.length > 0 ? positionData.count : 0;
 
   $: globalWinrate = ((summoner.globalStats?.wins / summoner.globalStats?.totalGames) * 100).toFixed(2);
 </script>
 
 <div class="min-w-[360px] flex flex-col relative">
-  {#if summoner.clashPosition && summoner.clashPosition !== mostPlayedPosition}
+  {#if summoner.clashPosition && summoner.clashPosition !== mostPlayedPosition?.position && mostPlayedPosition?.position !== Position.FILL}
     <div class="absolute top-2 right-2 flex bg-base-300 p-2 rounded-[5px]">
-      <span class="text-red text-xs mr-1">Most played Position: <span class="text-yellow">{mostPlayedPosition}</span></span>
+      <span class="text-red text-xs mr-1">Most played Position: <span class="text-yellow">{mostPlayedPosition?.position}</span></span>
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="15" fill="none" viewBox="0 0 18 15">
         <path stroke="#FB2841" stroke-width="1.773" d="M8.91 3.955v5.318m0 1.181v1.773M4.181 14l-2.364-2.364L7.728 1h2.363l5.91 10.636L13.635 14H4.182Z" />
       </svg>

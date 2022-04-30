@@ -11,13 +11,14 @@ export const query: Readable<QueryStore> = derived<Writable<string>, QueryStore>
     set(null);
 
     let eventSource = new EventSource(`${import.meta.env.VITE_BACKEND_PATH}/query/${$queryId}/sse`);
-    let keepAliveTimer: NodeJS.Timeout | undefined;
+    let timeout: NodeJS.Timeout | undefined;
+    /*let keepAliveTimer: NodeJS.Timeout | undefined;
     getActivity();
 
     function getActivity() {
       if (keepAliveTimer !== null) clearTimeout(keepAliveTimer);
       keepAliveTimer = setTimeout(reconnect, 30 * 1000);
-    }
+    }*/
 
     function reconnect() {
       eventSource.close();
@@ -28,18 +29,18 @@ export const query: Readable<QueryStore> = derived<Writable<string>, QueryStore>
       const data = JSON.parse(event.data);
 
       if (data.complete) {
-        if (keepAliveTimer !== null) clearTimeout(keepAliveTimer);
+        //if (keepAliveTimer !== null) clearTimeout(keepAliveTimer);
         eventSource.close();
-      } else {
+      } /*else {
         getActivity();
-      }
+      }*/
 
       set(data);
     };
 
     eventSource.onerror = (event) => {
       console.log("Got error! Reconnecting...");
-      reconnect();
+      timeout = setTimeout(() => reconnect(), 1000);
     };
   }
 });
