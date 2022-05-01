@@ -13,12 +13,7 @@ export const query: Readable<QueryStore> = derived<Writable<string>, QueryStore>
     let eventSource = new EventSource(`${import.meta.env.VITE_BACKEND_PATH}/query/${$queryId}/sse`);
     let timeout: NodeJS.Timeout | undefined;
 
-    function reconnect() {
-      eventSource.close();
-      eventSource = new EventSource(`${import.meta.env.VITE_BACKEND_PATH}/query/${$queryId}/sse`);
-    }
-
-    eventSource.onmessage = (event) => {
+    const onMessageCallback = (event: MessageEvent) => {
       const data = JSON.parse(event.data);
 
       if (data.complete) {
@@ -28,11 +23,22 @@ export const query: Readable<QueryStore> = derived<Writable<string>, QueryStore>
       set(data);
     };
 
-    eventSource.onerror = (event) => {
+    const onErrorCallback = (event: Event) => {
       console.log("Got error! Reconnecting...");
 
       if (timeout) clearTimeout(timeout);
-      timeout = setTimeout(() => reconnect(), 1000);
+      timeout = setTimeout(() => connect(), 1000);
     };
+
+    function connect() {
+      if (eventSource) eventSource.close();
+      eventSource = new EventSource(`${import.meta.env.VITE_BACKEND_PATH}/query/${$queryId}/sse`);
+
+      // Register events
+      eventSource.onmessage = onMessageCallback;
+      eventSource.onerror = onErrorCallback;
+    }
+
+    connect();
   }
 });
