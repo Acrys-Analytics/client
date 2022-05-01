@@ -10,7 +10,7 @@
   $: mostPlayedChampion = summoner.championPool[0]?.championName || "";
 
   $: mostPlayedPosition = summoner.mostPlayedPosition[0];
-  $: position = Position[summoner.clashPosition || mostPlayedPosition.position] || Position.FILL;
+  $: position = Position[summoner.clashPosition || mostPlayedPosition?.position] || Position.FILL;
   $: positionData = summoner.mostPlayedPosition && summoner.mostPlayedPosition.find((value) => value.position === position);
 
   $: gamesPlayedWithPosition = positionData && summoner.mostPlayedPosition?.length > 0 ? positionData.count : 0;
