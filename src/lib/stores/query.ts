@@ -10,7 +10,7 @@ export const query: Readable<QueryStore> = derived<Writable<string>, QueryStore>
   if (browser && $queryId) {
     set(null);
 
-    let eventSource = new EventSource(`${import.meta.env.VITE_BACKEND_PATH}/query/${$queryId}/sse`);
+    let eventSource: EventSource;
     let timeout: NodeJS.Timeout | undefined;
 
     const onMessageCallback = (event: MessageEvent) => {
